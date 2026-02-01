@@ -1,0 +1,17 @@
+plan:
+  name: thermal_smoke
+  description: Basic rack thermal validation
+
+steps:
+  - id: set_fan
+    action: set_fan_speed
+    value: 70
+
+  - id: heat_up
+    action: apply_load
+    watts: 450
+    duration_sec: 5
+
+  - id: read_temp
+    action: read_temperature
+    expect_max_c: 85
